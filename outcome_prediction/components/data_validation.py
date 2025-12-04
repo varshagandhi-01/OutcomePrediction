@@ -4,7 +4,7 @@ import pandas as pd
 from pandas import DataFrame
 import numpy as np
 
-np.float_ = np.float64
+np.float_ = np.float64 # this is required for evidently to work
 
 from evidently.model_profile import Profile
 from evidently.model_profile.sections import DataDriftProfileSection
