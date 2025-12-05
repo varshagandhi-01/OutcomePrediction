@@ -11,3 +11,4 @@ from outcome_prediction.pipeline.training_pipeline import TrainingPipeline
 
 obj = TrainingPipeline()
 obj.run_pipeline()
+
