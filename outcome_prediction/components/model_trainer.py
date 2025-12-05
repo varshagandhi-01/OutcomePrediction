@@ -71,7 +71,7 @@ class ModelTrainer:
                 logging.info("No best model found with score more than base score")
                 raise Exception("No best model found with score more than base score")
             
-            prepare_model = PrepareModel(preprocessing_object=precision_score, trained_model_object=best_model_detail.best_model)
+            prepare_model = PrepareModel(preprocessing_object=preprocessing_obj, trained_model_object=best_model_detail.best_model)
 
             save_object(file_path=self.model_trainer_config.trained_model_file_path, obj = prepare_model)
 

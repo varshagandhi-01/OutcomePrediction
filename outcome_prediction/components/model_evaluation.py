@@ -100,6 +100,7 @@ class ModelEvaluation:
         On Failure  :   Write an exception log and then raise an exception
         """  
         try:
+            logging.info("beginning model evaluation")
             evaluate_model_response = self.evaluate_model()
             s3_model_path = self.mode_eval_config.s3_model_key_path
 

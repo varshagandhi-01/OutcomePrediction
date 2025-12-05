@@ -1,6 +1,4 @@
 # OutcomePrediction
-# ReactorExplorer
-
 
 Features
 

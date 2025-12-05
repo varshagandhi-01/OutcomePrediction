@@ -38,7 +38,7 @@ class PrepareModel:
         try:
             transformed_feature = self.preprocessing_object.transform(dataframe)
 
-            return self.trained_model_object.predic(transformed_feature)
+            return self.trained_model_object.predict(transformed_feature)
 
         except Exception as e:
             raise AppException(e, sys) from e 

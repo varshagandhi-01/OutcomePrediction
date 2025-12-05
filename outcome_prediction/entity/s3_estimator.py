@@ -1,6 +1,7 @@
 import sys
 from pandas import DataFrame
 
+from outcome_prediction.logger.log import logging
 from outcome_prediction.exception.exception_handler import AppException
 from outcome_prediction.entity.estimator import PrepareModel
 from outcome_prediction.cloud_storage.aws_storage import SimpleStorageService
@@ -26,6 +27,7 @@ class ModelEstimator:
         
     def load_model(self,) -> PrepareModel:
         try:
+            logging.info("model loaded")
             return self.s3.load_model(self.model_path, bucket_name=self.bucket_name)
         
         except Exception as e:
@@ -44,7 +46,7 @@ class ModelEstimator:
         try:
             if self.loaded_model is None:
                 self.loaded_model = self.load_model()
-            
+            logging.info(f"after model loaded {type(self.loaded_model)}")
             return self.loaded_model.predict(dataframe=dataframe)
 
         except Exception as e:

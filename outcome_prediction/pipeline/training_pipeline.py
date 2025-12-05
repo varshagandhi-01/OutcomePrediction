@@ -3,7 +3,7 @@ from outcome_prediction.logger.log import logging
 from outcome_prediction.exception.exception_handler import AppException
 from outcome_prediction.components.data_ingestion import DataIngestion
 from outcome_prediction.components.data_validation import DataValidation
-from outcome_prediction.components.data_transformation import DataTransformation
+from outcome_prediction.components.data_transformation import DataTransformation    
 from outcome_prediction.components.model_trainer import ModelTrainer
 from outcome_prediction.components.model_evaluation import ModelEvaluation
 from outcome_prediction.components.model_pusher import ModelPusher
@@ -106,9 +106,9 @@ class TrainingPipeline:
                 data_ingestion_artifact=data_ingestion_artifact,
                 model_trainer_artifact=mode_trainer_artifact
             )
-            mode_trainer_artifact = model_evaluation.initate_model_evaluation()
+            mode_evaluation_artifact = model_evaluation.initate_model_evaluation()
         
-            return mode_trainer_artifact
+            return mode_evaluation_artifact
         
         except Exception as e:
             raise AppException(e, sys)
