@@ -4,6 +4,7 @@ from outcome_prediction.exception.exception_handler import AppException
 from outcome_prediction.components.data_ingestion import DataIngestion
 from outcome_prediction.components.data_validation import DataValidation
 from outcome_prediction.components.data_transformation import DataTransformation
+from outcome_prediction.components.model_trainer import ModelTrainer
 
 from outcome_prediction.entity.config_entity import (DataIngestionConfig,
                                                      DataValidationConfig,
@@ -15,7 +16,11 @@ from outcome_prediction.entity.config_entity import (DataIngestionConfig,
 
 from outcome_prediction.entity.artifact_entity import (DataIngestionArtifact,
                                                        DataValidationArtifact,
-                                                       DataTransformationArtifact
+                                                       DataTransformationArtifact,
+                                                       ModelTrainerArtifact,
+                                                       ModelEvaluationArtifact,
+                                                       ModelPusherArtifact,
+                                                       ClassificationMetricArtifact
                                                        )
 
 class TrainingPipeline:
@@ -74,6 +79,20 @@ class TrainingPipeline:
         except Exception as e:
             raise AppException(e, sys) from e 
 
+    def start_model_trianer(self, data_trainsformation_artifact = DataTransformationArtifact) -> ModelTrainerArtifact:
+        """
+        This method of TrainPipeline class is responsible for starting model training
+        """
+        try:
+            model_trainer = ModelTrainer(data_transformation_artifact=data_trainsformation_artifact, 
+                                         model_trainer_config=self.model_trainer_config)
+            model_trainer_artifact = model_trainer.initiate_model_trainer()
+
+            return model_trainer_artifact
+
+        except Exception as e:
+            raise AppException(e, sys) from e 
+
     # main pipeline function
     def run_pipeline(self, ) -> None:
         """
@@ -84,7 +103,9 @@ class TrainingPipeline:
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
             data_transformation_artifact = self.start_data_transformation(data_ingestion_artifact=data_ingestion_artifact,
                                                                           data_validation_artifact=data_validation_artifact)
-            
+            model_trainer_artifact = self.start_model_trianer(data_trainsformation_artifact=data_transformation_artifact)
+
         except Exception as e:
             raise AppException(e, sys) from e 
              
+
