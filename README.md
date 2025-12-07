@@ -1,7 +1,7 @@
 # OutcomePrediction
 
 Features
-
+This project uses machine learning to predict and outcome.
 ---
 
 ## Table of Contents
@@ -16,17 +16,17 @@ Features
 ---
 
 ## Features
-- **Data Ingestion**: Download and extract raw datasets.
+- **Data Ingestion**: Data ingestion from mongodb.
 - **Data Validation**: Validate the dataset against predefined schemas.
 - **Data Transformation**: Clean and transform data for analysis.
-- **Model Training**: Train a recommendation model using `NearestNeighbors`.
-- **Recommendation System**: Suggest similar power plants based on input criteria.
+- **Model Training and evaluation**: Training and evaluation of models KNN, RandomForestClassifier, XGBoost`.
+- **Prediction System**: Suggest similar power plants based on input criteria.
 
 ---
 
 ## Project Structure
 ```
-ReactorExplorer/
+OutcomePrediction/
 │
 ├── src/
 ├── tests/
@@ -53,29 +53,28 @@ Jupyter Notebook
 ```
 jupyter notebook notebooks/*.ipynb
 ```
-Streamlit Web App 
+FAST API Web App 
 ```
-streamlit run app.py
+python app.py
 ```
 ---
 ## Model / Approach
 Stage       	    Description
-Data Collection	    Public nuclear reactor datasets
+Data Collection	    Public  datasets
 Preprocessing	    Cleaning, scaling, handling missing values
 Feature Engineering	Technical attributes used as similarity vectors
-Model	            k-Nearest Neighbors
+Model	            k-Nearest Neighbors, RandomForest, XGBoost
 Evaluation	        Qualitative similarity & clustering visualization
 
 Example Output
-Query Reactor	Recommended Similar Reactors
-Armenian-2      ATUCHA I, Kernkraftwerk Maehleberg, M.A.P.P., N.A.P.S, KAKRAPARA
+
 
 
 Dataset Info
 
 Source: WRI
 
-Key attributes: Capacity MW, Name
+Key attributes: 
 
 ## Roadmap
 
@@ -131,7 +130,7 @@ ECR_REPOSITORY_NAME
 ```
 ## Demo Preview
 ### Input:
-List of reactors (as per data file source: WRI)
+
 
 Data source sample:
 
