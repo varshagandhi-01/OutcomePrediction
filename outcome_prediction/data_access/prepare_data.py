@@ -6,8 +6,7 @@ import pandas as pd
 import sys
 from typing import Optional
 import numpy as np
-import pymongo
-import os
+
 
 
 class PrepareData:
@@ -32,7 +31,7 @@ class PrepareData:
             
             #self.mongo_client = pymongo.MongoClient(os.getenv("MONGODB_URL"))
             # Connect to the database
-            db = self.mongo_client['OCD']
+            db = self.mongo_client.database
 
             # Example operation: Fetch documents from a collection
             collection = db['raw_data']
