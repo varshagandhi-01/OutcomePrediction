@@ -6,6 +6,8 @@ import pandas as pd
 import sys
 from typing import Optional
 import numpy as np
+import pymongo
+import os
 
 
 class PrepareData:
@@ -14,7 +16,8 @@ class PrepareData:
     """
     def __init__(self):
         try:
-            self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
+            '''self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
+
             print(f"connected to mongo db: {DATABASE_NAME}")
         except Exception as e:
             raise AppException(e, sys) from e
@@ -25,13 +28,22 @@ class PrepareData:
         return pd.DataFrame of collection
         """
         try:
+            '''
+            self.mongo_client = pymongo.MongoClient(os.getenv("MONGODB_URL"))
+            # Connect to the database
+            db = self.mongo_client['OCD']
+
+            # Example operation: Fetch documents from a collection
+            collection = db['raw_data']
+            '''
             if database_name is None:
                 print(f"connected to mongo db: {database_name}")
                 collection = self.mongo_client.database[collection_name]
             else:
                 print(f"connected to mongo db: {collection_name}")
                 collection = self.mongo_client[database_name][collection_name]
-
+            '''
+        
             df = pd.DataFrame(list(collection.find()))
             if "_id" in df.columns.to_list():
                 df = df.drop(columns=["_id"], axis = 1)
