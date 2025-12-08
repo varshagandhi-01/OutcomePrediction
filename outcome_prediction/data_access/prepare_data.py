@@ -16,7 +16,8 @@ class PrepareData:
     """
     def __init__(self):
         try:
-            '''self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
+            
+            #self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
 
             print(f"connected to mongo db: {DATABASE_NAME}")
         except Exception as e:
@@ -28,7 +29,7 @@ class PrepareData:
         return pd.DataFrame of collection
         """
         try:
-            '''
+            
             self.mongo_client = pymongo.MongoClient(os.getenv("MONGODB_URL"))
             # Connect to the database
             db = self.mongo_client['OCD']
