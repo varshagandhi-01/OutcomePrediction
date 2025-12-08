@@ -34,7 +34,7 @@ class PrepareData:
             db = self.mongo_client.database
 
             # Example operation: Fetch documents from a collection
-            collection = db['raw_data']
+            collection = db[collection_name]
             '''
             if database_name is None:
                 print(f"connected to mongo db: {database_name}")
