@@ -1,7 +1,7 @@
 # OutcomePrediction
 
 Features
-This project uses machine learning to predict and outcome.
+This project uses machine learning to predict an outcome.
 ---
 
 ## Table of Contents
@@ -127,6 +127,7 @@ AWS_SECRET_ACCESS_KEY
 AWS_REGION
 AWS_ECR_LOGIN_URI
 ECR_REPOSITORY_NAME
+MONGODB_URL
 ```
 ## Demo Preview
 ### Input:

@@ -29,20 +29,11 @@ class PrepareData:
         """
         try:
             
-            #self.mongo_client = pymongo.MongoClient(os.getenv("MONGODB_URL"))
             # Connect to the database
             db = self.mongo_client.database
 
             # Example operation: Fetch documents from a collection
             collection = db[collection_name]
-            '''
-            if database_name is None:
-                print(f"connected to mongo db: {database_name}")
-                collection = self.mongo_client.database[collection_name]
-            else:
-                print(f"connected to mongo db: {collection_name}")
-                collection = self.mongo_client[database_name][collection_name]
-            '''
         
             df = pd.DataFrame(list(collection.find()))
             if "_id" in df.columns.to_list():
