@@ -1,7 +1,7 @@
 # OutcomePrediction
 
 Features
-This project uses machine learning to predict an outcome.
+This project uses machine learning to predict an outcome based on kaggle data.
 ---
 
 ## Table of Contents
